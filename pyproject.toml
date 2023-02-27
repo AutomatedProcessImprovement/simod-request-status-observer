@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "simod-request-status-observer"
+version = "0.1.0"
+description = "Simod worker that observes for status changes and updates requests metadata"
+authors = ["Ihar Suvorau <ihar.suvorau@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pika = "^1.3.1"
+simod-http = { git = "https://github.com/AutomatedProcessImprovement/simod-http.git", tag = "0.3.0" }
+
+
+[tool.poetry.group.dev.dependencies]
+pika-stubs = "^0.1.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
