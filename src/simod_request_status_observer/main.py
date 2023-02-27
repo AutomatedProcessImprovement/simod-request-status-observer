@@ -115,6 +115,8 @@ class Worker:
 
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG)
+
     settings = Settings()
     requests_status_observer = Worker(settings)
     requests_status_observer.run()
