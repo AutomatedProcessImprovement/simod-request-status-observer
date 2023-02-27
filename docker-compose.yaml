@@ -1,0 +1,20 @@
+services:
+  worker:
+    image: nokal/simod-request-status-observer:0.0.0
+    depends_on:
+      - rabbitmq-service
+    restart: unless-stopped
+    environment:
+      BROKER_URL: amqp://guest:guest@rabbitmq-service:5672
+      SIMOD_EXCHANGE_NAME: simod
+      SIMOD_STATUS_WORKER_BINDING_KEY: requests.status.*
+      SIMOD_HTTP_STORAGE_PATH: /tmp/simod-volume/data
+    volumes:
+      - /tmp/simod-volume/:/tmp/simod-volume/
+
+  rabbitmq-service:
+    image: rabbitmq:3.11-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    restart: unless-stopped
