@@ -1,6 +1,9 @@
 services:
   worker:
-    image: nokal/simod-request-status-observer:0.0.0
+    image: nokal/simod-request-status-observer:0.1.2
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - rabbitmq-service
     restart: unless-stopped

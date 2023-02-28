@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "simod-request-status-observer"
-version = "0.1.1"
+version = "0.1.2"
 description = "Simod worker that observes for status changes and updates requests metadata"
 authors = ["Ihar Suvorau <ihar.suvorau@gmail.com>"]
 readme = "README.md"

@@ -83,12 +83,12 @@ class Worker:
         routing_key = method.routing_key
         status = routing_key.split('.')[-1]
 
-        logging.info(f'Got message: {request_id} {status}')
+        logging.info(f'Received message request {request_id} with status {status}')
 
         try:
             request = self.update_status(request_id, status)
         except Exception as e:
-            logging.error(f'Error while updating request {request_id}: {e}')
+            logging.exception(f'Error while updating request {request_id}: {e}')
             return
 
         channel.basic_ack(delivery_tag=method.delivery_tag)
@@ -115,7 +115,7 @@ class Worker:
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
 
     settings = Settings()
     requests_status_observer = Worker(settings)
